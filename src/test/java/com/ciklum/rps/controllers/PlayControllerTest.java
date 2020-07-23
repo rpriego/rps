@@ -4,7 +4,6 @@ import com.ciklum.rps.domain.Game;
 import com.ciklum.rps.dto.UserGamesDto;
 import com.ciklum.rps.services.GameService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,7 +32,7 @@ class PlayControllerTest {
     @MockBean
     UserGamesDto userGamesMock;
 
-    @Mock
+    @MockBean
     GameService gameServiceMock;
 
     Game testGame = new Game(ROCK, PAPER);
@@ -68,7 +67,6 @@ class PlayControllerTest {
         assertThat(userGamesList.get(0), is(testGame));
         verify(gameServiceMock, times(1)).playGame();
     }
-
 
     @Test
     void resetGameShouldDeleteGamesList() throws Exception {
