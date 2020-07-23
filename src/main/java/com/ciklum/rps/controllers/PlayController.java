@@ -19,7 +19,8 @@ public class PlayController {
 
     @GetMapping("/play")
     public String getPage(Model model) {
-        return null;
+        model.addAttribute("userGames", userGames);
+        return "play";
     }
 
     @PostMapping("/playGame")
