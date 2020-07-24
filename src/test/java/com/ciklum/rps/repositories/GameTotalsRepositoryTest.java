@@ -20,10 +20,12 @@ class GameTotalsRepositoryTest {
 
     @Test
     void saveGameShouldBeThreadSafeAndRetrieveRightTotals() throws InterruptedException {
+        //given
         final int numIterations = 1000;
         final int numThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
+        //when
         for(int i=0; i<numIterations; i++) {
             executor.submit(() -> underTest.saveGameResult(GameResult.P1WINS));
             executor.submit(() -> underTest.saveGameResult(GameResult.P2WINS));
@@ -33,6 +35,7 @@ class GameTotalsRepositoryTest {
         executor.shutdown();
         executor.awaitTermination(5, TimeUnit.SECONDS);
 
+        //then
         assertThat(underTest.getTotals().getTotalGames(), is(3000));
         assertThat(underTest.getTotals().getTotalWinsP1(), is(1000));
         assertThat(underTest.getTotals().getTotalWinsP2(), is(1000));

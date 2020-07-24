@@ -1,6 +1,7 @@
 package com.ciklum.rps.services;
 
 import com.ciklum.rps.domain.Game;
+import com.ciklum.rps.dto.TotalGamesDto;
 import com.ciklum.rps.repositories.GameTotalsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -121,5 +122,18 @@ class GameServiceTest {
         Mockito.verify(spy, times(1)).createGameWithDefaultStrategy();
         Mockito.verify(spy).play(game);
         Mockito.verify(gameTotalsRepositoryMock, times(1)).saveGameResult(game.getResult());
+    }
+
+    @Test
+    void getTotalsShouldRetrieveFromRepo() {
+        //given
+        TotalGamesDto testDto = new TotalGamesDto(5,3,1,1);
+        when(gameTotalsRepositoryMock.getTotals()).thenReturn(testDto);
+
+        //when
+        TotalGamesDto result = underTest.getTotals();
+
+        //then
+        assertThat(result, is(testDto));
     }
 }

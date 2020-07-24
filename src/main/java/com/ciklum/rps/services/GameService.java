@@ -2,6 +2,7 @@ package com.ciklum.rps.services;
 
 import com.ciklum.rps.domain.Game;
 import com.ciklum.rps.domain.Shape;
+import com.ciklum.rps.dto.TotalGamesDto;
 import com.ciklum.rps.repositories.GameTotalsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,9 @@ public class GameService {
         } else {
             game.setResult(P2WINS);
         }
+    }
+
+    public TotalGamesDto getTotals() {
+        return null;
     }
 }
