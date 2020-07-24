@@ -43,6 +43,6 @@ public class GameService {
     }
 
     public TotalGamesDto getTotals() {
-        return null;
+        return gameTotalsRepository.getTotals();
     }
 }
