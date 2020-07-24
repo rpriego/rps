@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -14,6 +15,10 @@ import java.util.List;
 public class UserGamesDto {
 
     private List<Game> userGames;
+
+    public UserGamesDto() {
+        userGames = new ArrayList<>();
+    }
 
     public List<Game> getUserGames() {
         return userGames;

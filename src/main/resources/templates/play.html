@@ -3,7 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>RPS Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<button type="button" onclick="playGame()">Play</button>
+<br/>
+<button type="button" onclick="resetGame()">Reset</button>
+<br/>
+<div id="gamesSummary">
+    <span th:text="'You have played ' + ${#lists.size(userGamesDto.userGames)} + ' games'"></span>
+    <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Player 1</th>
+            <th>Player 2</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+        <th:block th:each="game : ${userGamesDto.userGames}">
+            <tr>
+                <td th:text="${game.player1}"></td>
+                <td th:text="${game.player2}"></td>
+
+                <td th:if="${game.result == T(com.ciklum.rps.domain.GameResult).P1WINS}" th:text="#{game.result.p1wins}"></td>
+                <td th:if="${game.result == T(com.ciklum.rps.domain.GameResult).P2WINS}" th:text="#{game.result.p2wins}"></td>
+                <td th:if="${game.result == T(com.ciklum.rps.domain.GameResult).DRAW}" th:text="#{game.result.draw}"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+<script th:inline="javascript">
+
+    playGame = function() {
+        var settings = {
+            type: 'POST',
+            url: [[ @{/playGame} ]]
+        }
+
+        $.ajax(settings).done(function(result) {
+            $('#gamesSummary').replaceWith(result);
+        });
+    }
+
+    resetGame = function() {
+        var settings = {
+            type: 'POST',
+            url: [[ @{/resetGame} ]]
+        }
+
+        $.ajax(settings).done(function(result) {
+            $('#gamesSummary').replaceWith(result);
+        });
+    }
+
+</script>
 </body>
 </html>

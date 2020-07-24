@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PlayController {
 
     @Autowired
-    UserGamesDto userGames;
+    UserGamesDto userGamesDto;
 
     @Autowired
     GameService gameService;
 
     @GetMapping("/play")
     public String getPage(Model model) {
-        model.addAttribute("userGames", userGames);
+        model.addAttribute("userGamesDto", userGamesDto);
         return "play";
     }
 
     @PostMapping("/playGame")
     public String playGame(Model model) {
         Game game = gameService.playGame();
-        userGames.getUserGames().add(game);
+        userGamesDto.getUserGames().add(game);
 
-        model.addAttribute("userGames", userGames);
-        return "play";
+        model.addAttribute("userGamesDto", userGamesDto);
+        return "play :: #gamesSummary";
     }
 
     @PostMapping("/resetGame")
     public String resetGame(Model model) {
-        userGames.getUserGames().clear();
+        userGamesDto.getUserGames().clear();
 
-        model.addAttribute("userGames", userGames);
-        return "play";
+        model.addAttribute("userGamesDto", userGamesDto);
+        return "play :: #gamesSummary";
     }
 
 }
