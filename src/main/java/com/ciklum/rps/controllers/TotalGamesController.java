@@ -14,7 +14,8 @@ public class TotalGamesController {
 
     @GetMapping("/total")
     public String getPage(Model model) {
-        return null;
+        model.addAttribute("totalGamesDto", gameService.getTotals());
+        return "total";
     }
 
 }
