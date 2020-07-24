@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PlayController {
 
     @Autowired
-    UserGamesDto userGamesDto;
+    private UserGamesDto userGamesDto;
 
     @Autowired
-    GameService gameService;
+    private GameService gameService;
 
     @GetMapping("/play")
     public String getPage(Model model) {

@@ -12,7 +12,7 @@ import static com.ciklum.rps.domain.GameResult.*;
 public class GameService {
 
     @Autowired
-    Random random;
+    private Random random;
 
     public Game playGame() {
         Game game = createGameWithDefaultStrategy();
