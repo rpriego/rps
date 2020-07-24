@@ -1,6 +1,7 @@
 package com.ciklum.rps.services;
 
 import com.ciklum.rps.domain.Game;
+import com.ciklum.rps.repositories.GameTotalsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,6 +23,9 @@ class GameServiceTest {
 
     @Mock
     private Random randomMock;
+
+    @Mock
+    private GameTotalsRepository gameTotalsRepositoryMock;
 
     @InjectMocks
     @Autowired
@@ -104,7 +108,7 @@ class GameServiceTest {
     }
 
     @Test
-    void playGameShouldCreateDefaultAndPlayIt() {
+    void playGameShouldCreateDefaultPlayItAndSaveTotals() {
         //given
         GameService spy = Mockito.spy(underTest);
         Game game = new Game(PAPER, ROCK);
@@ -116,6 +120,6 @@ class GameServiceTest {
         //then
         Mockito.verify(spy, times(1)).createGameWithDefaultStrategy();
         Mockito.verify(spy).play(game);
-
+        Mockito.verify(gameTotalsRepositoryMock, times(1)).saveGameResult(game.getResult());
     }
 }

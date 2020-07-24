@@ -2,6 +2,7 @@ package com.ciklum.rps.services;
 
 import com.ciklum.rps.domain.Game;
 import com.ciklum.rps.domain.Shape;
+import com.ciklum.rps.repositories.GameTotalsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Random;
@@ -13,6 +14,9 @@ public class GameService {
 
     @Autowired
     private Random random;
+
+    @Autowired
+    private GameTotalsRepository gameTotalsRepository;
 
     public Game playGame() {
         Game game = createGameWithDefaultStrategy();
