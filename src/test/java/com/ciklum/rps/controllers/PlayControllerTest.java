@@ -46,7 +46,7 @@ class PlayControllerTest {
         //then
         mockMvc.perform(MockMvcRequestBuilders.get("/play"))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("userGames", userGamesMock));
+                .andExpect(model().attribute("userGamesDto", userGamesMock));
 
     }
 
@@ -60,7 +60,7 @@ class PlayControllerTest {
         //when
         mockMvc.perform(MockMvcRequestBuilders.post("/playGame"))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("userGames", userGamesMock));
+                .andExpect(model().attribute("userGamesDto", userGamesMock));
 
         //then
         assertThat(userGamesList.size(), is(1));
@@ -78,7 +78,7 @@ class PlayControllerTest {
         //when
         mockMvc.perform(MockMvcRequestBuilders.post("/resetGame"))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("userGames", userGamesMock));
+                .andExpect(model().attribute("userGamesDto", userGamesMock));
 
         //then
         assertThat(userGamesList.size(), is(0));

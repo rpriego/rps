@@ -2,9 +2,9 @@ package com.ciklum.rps.repositories;
 
 import com.ciklum.rps.domain.GameResult;
 import com.ciklum.rps.dto.TotalGamesDto;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class GameTotalsRepository {
     private int totalGames = 0;
     private int totalWinsP1 = 0;
