@@ -6,5 +6,24 @@
     <link rel="stylesheet" th:href="@{/rps.css}"/>
 </head>
 <body>
+<table class="paleBlueRows">
+    <thead>
+    <tr>
+        <th>Total Rounds</th>
+    </tr>
+    </thead>
+    <tr>
+        <td th:text="'Total rounds played: ' + ${totalGamesDto.totalGames}"></td>
+    </tr>
+    <tr>
+        <td th:text="'Total wins for player 1: ' + ${totalGamesDto.totalWinsP1}"></td>
+    </tr>
+    <tr>
+        <td th:text="'Total wins for player 2: ' + ${totalGamesDto.totalWinsP2}"></td>
+    </tr>
+    <tr>
+        <td th:text="'Total draws: ' + ${totalGamesDto.totalDraws}"></td>
+    </tr>
+</table>
 </body>
 </html>

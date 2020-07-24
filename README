@@ -1,0 +1,13 @@
+In order to implement the exercise, I have chosen to go with Spring Boot web application, adding the thymeleaf starter to render the views.
+
+PART 1 - DESIGN
+First, I created the domain model, with a Game class including the two choices from both players, as well as the result. All three fields are Enum.
+Also, to implement the table with the games played by the user, I've done it with a session bean (UserGamesDto).
+I added a functional interface IShapeStrategy, that will behave as a Supplier for the Shape enum class.
+A service will take responsability of creating the game object and assign the result.
+The controller will manage the session bean, injected as a proxy, and reloading with jQuery the table of the view.
+I could have created a builder for the Game class, using the factory for the Shape, and a consumer for setting the game result, but I wanted to keep things simple
+
+PART 2 - DESIGN
+I have created a repository, that will keep the total calls internally and will expose a Dto object to render the view, and pass it to the GameService to reach the controller
+The repository gets injected into the Game Service, and this service will send the dto to the controller.
