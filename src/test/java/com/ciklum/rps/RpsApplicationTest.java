@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.notNullValue;
 class RpsApplicationTest {
 
 	@Autowired
-	Random random;
+	private Random random;
 
 	@Test
 	void contextLoads() {

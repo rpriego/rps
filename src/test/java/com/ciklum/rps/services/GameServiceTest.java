@@ -21,11 +21,11 @@ import static org.mockito.Mockito.*;
 class GameServiceTest {
 
     @Mock
-    Random randomMock;
+    private Random randomMock;
 
     @InjectMocks
     @Autowired
-    GameService underTest;
+    private GameService underTest;
 
     @Test
     void createGameWithDefaultStrategyWillSelectRightOptions() {

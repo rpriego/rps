@@ -27,15 +27,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PlayControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @MockBean
-    UserGamesDto userGamesMock;
+    private UserGamesDto userGamesMock;
 
     @MockBean
-    GameService gameServiceMock;
+    private GameService gameServiceMock;
 
-    Game testGame = new Game(ROCK, PAPER);
+    private Game testGame = new Game(ROCK, PAPER);
 
     @Test
     void getPageShouldAddBeanToModel() throws Exception {

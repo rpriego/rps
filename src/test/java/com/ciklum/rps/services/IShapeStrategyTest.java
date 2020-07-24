@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 class IShapeStrategyTest {
 
     @Mock
-    Random randomMock;
+    private Random randomMock;
 
     @Test
     public void randomShouldSelectRock() {
