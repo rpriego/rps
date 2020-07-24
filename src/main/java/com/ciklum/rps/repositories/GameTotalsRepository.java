@@ -2,20 +2,32 @@ package com.ciklum.rps.repositories;
 
 import com.ciklum.rps.domain.GameResult;
 import com.ciklum.rps.dto.TotalGamesDto;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class GameTotalsRepository {
-    private int totalGames;
-    private int totalWinsP1;
-    private int totalWinsP2;
-    private int totalDraws;
+    private int totalGames = 0;
+    private int totalWinsP1 = 0;
+    private int totalWinsP2 = 0;
+    private int totalDraws = 0;
 
-    public TotalGamesDto getTotals() {
-        return null;
+    public synchronized TotalGamesDto getTotals() {
+        return new TotalGamesDto(totalGames, totalWinsP1, totalWinsP2, totalDraws);
     }
 
-    public void saveGameResult(GameResult gameResult) {
+    public synchronized void saveGameResult(GameResult gameResult) {
+        totalGames++;
 
+        switch(gameResult) {
+            case P1WINS:
+                totalWinsP1++;
+                break;
+            case P2WINS:
+                totalWinsP2++;
+                break;
+            case DRAW:
+                totalDraws++;
+                break;
+        }
     }
 }
