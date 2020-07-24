@@ -21,6 +21,7 @@ public class GameService {
     public Game playGame() {
         Game game = createGameWithDefaultStrategy();
         play(game);
+        gameTotalsRepository.saveGameResult(game.getResult());
         return game;
     }
 
